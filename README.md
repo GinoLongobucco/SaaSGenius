@@ -4,6 +4,8 @@
 
 SaaSGenius es una plataforma avanzada de análisis de proyectos SaaS que utiliza inteligencia artificial para convertir conceptos de negocio en planes estratégicos completos. Combina múltiples modelos de IA para proporcionar análisis de mercado, recomendaciones tecnológicas y roadmaps de desarrollo personalizados.
 
+<img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm82bGg2dXQ2M3prcjF1djZ2dGx4bGkwNTExbXpjeHFhMnk2bWdmNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M5aUBMlZTvSpFCt1aG/giphy.gif" alt="SaaSGenius GIF" width="500"/>
+
 ## ✨ Características Principales
 
 ### 🧠 Análisis Inteligente con IA
