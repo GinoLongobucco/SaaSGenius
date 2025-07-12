@@ -1,0 +1,5 @@
+2025-07-09 06:22:26,764 - WARNING - ALERTA: high_error_rate - Severidad: warning
+2025-07-09 08:06:01,149 - WARNING - ALERTA: high_cpu - Severidad: critical
+2025-07-10 22:16:54,201 - WARNING - ALERTA: high_error_rate - Severidad: warning
+2025-07-11 02:03:22,502 - WARNING - ALERT: high_cpu - CPU usage is above 80%: 84.0%
+2025-07-11 02:03:23,036 - WARNING - ALERT: high_cpu - CPU usage is above 80%: 91.2%

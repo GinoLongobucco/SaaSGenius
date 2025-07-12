@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block navbar_navigation %}
+<ul class="nav-menu">
+    <li class="nav-item">
+        <a href="{{ url_for('main.index') }}" class="nav-link">Inicio</a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url_for('main.dashboard') }}" class="nav-link active">Dashboard</a>
+    </li>
+    <li class="nav-item">
+        <a href="#contact" class="nav-link">Contacto</a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block navbar_user %}
+<div class="nav-user">
+    <span class="user-welcome">¡Hola, {{ user.username }}!</span>
+</div>
+{% endblock %}
+
+{% block content %}
+
+    
+    <main class="dashboard-container main-content container" id="main-content">
+    <!-- Dashboard Header -->
+    <section class="dashboard-header" aria-labelledby="dashboard-heading">
+        <div class="dashboard-content">
+            <div class="welcome-section">
+                <h1 id="dashboard-heading" class="dashboard-title">¡Hola, {{ user.username }}!</h1>
+                <p class="dashboard-subtitle">Gestiona y analiza tus proyectos SaaS</p>
+                
+                <div class="dashboard-actions">
+                    <a href="{{ url_for('main.index') }}" id="new-analysis-link" class="btn btn-primary btn-stable">
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                        Nuevo Análisis
+                    </a>
+                    <button class="btn btn-secondary btn-stable" onclick="exportAllProjects()">
+                        <i class="fas fa-download" aria-hidden="true"></i>
+                        Exportar Todo
+                    </button>
+                    <button class="btn btn-ghost btn-stable" onclick="showSettings()">
+                        <i class="fas fa-cog" aria-hidden="true"></i>
+                        Configuración
+                    </button>
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <span class="badge {{ 'premium' if user.is_premium() else '' }}">
+                    {{ user.subscription_type }}
+                </span>
+                <p class="user-email">{{ user.email }}</p>
+            </div>
+        </div>
+    </section>
+        
+        <!-- Navigation -->
+        <div class="dashboard-nav">
+            <h2 class="section-title">Mis Proyectos ({{ projects|length }})</h2>
+            <div class="nav-actions">
+                <button class="btn btn-ghost btn-stable" onclick="logout()">
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    Cerrar Sesión
+                </button>
+            </div>
+        </div>
+        
+        <!-- Projects Grid -->
+        {% if projects %}
+        <div class="projects-grid" id="projectsGrid">
+            {% for project in projects %}
+            <div class="card hover-lift" data-project-id="{{ project.id }}">
+                <div class="card-header">
+                    <div class="project-info">
+                        <h3 class="card-title">{{ project.title }}</h3>
+                        <p class="project-date">{{ project.created_at }}</p>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn btn-sm btn-ghost btn-stable {{ 'active' if project.is_favorite else '' }}" 
+                                onclick="toggleFavorite('{{ project.id }}')"
+                                title="Marcar como favorito"
+                                aria-label="Marcar como favorito">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
+                        </button>
+
+                        <button class="btn btn-sm btn-ghost btn-stable" 
+                                onclick="deleteProject('{{ project.id }}')"
+                                title="Eliminar proyecto"
+                                aria-label="Eliminar proyecto">
+                            <i class="fas fa-trash" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <p class="project-description">{{ project.description }}</p>
+                    
+                    {% if project.parsed_analysis and project.parsed_analysis.analysis %}
+                    <div class="analysis-preview">
+                        {% if project.parsed_analysis.analysis.executive_summary %}
+                        <div class="analysis-summary">
+                            <h4 class="analysis-title">Resumen Ejecutivo</h4>
+                            <p class="analysis-text">{{ project.parsed_analysis.analysis.executive_summary[:150] }}{% if project.parsed_analysis.analysis.executive_summary|length > 150 %}...{% endif %}</p>
+                        </div>
+                        {% endif %}
+                        
+                        {% if project.parsed_analysis.analysis.core_features %}
+                        <div class="analysis-features">
+                            <h4 class="analysis-title">Características Principales</h4>
+                            <ul class="features-list">
+                                {% for feature in project.parsed_analysis.analysis.core_features[:3] %}
+                                <li>{{ feature }}</li>
+                                {% endfor %}
+                                {% if project.parsed_analysis.analysis.core_features|length > 3 %}
+                                <li class="more-features">+{{ project.parsed_analysis.analysis.core_features|length - 3 }} más...</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if project.tags %}
+                    <div class="project-tags">
+                        {% for tag in project.tags.split(',') %}
+                        <span class="badge">{{ tag.strip() }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-stable" onclick="viewAnalysis('{{ project.id }}')">
+                        <i class="fas fa-chart-line"></i>
+                        Ver Análisis
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-projects">
+            <div class="empty-icon">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3 class="empty-title">¡Comienza tu primer análisis!</h3>
+            <p class="empty-description">
+                Aún no tienes proyectos analizados. Crea tu primer análisis de proyecto SaaS.
+            </p>
+            <a href="/" class="btn btn-primary btn-stable" onclick="window.location.href='/'; return false;">
+                <i class="fas fa-plus"></i>
+                Crear Primer Proyecto
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script>
+        // Dashboard-specific JavaScript
+        let currentUser = {
+            id: '{{ user.id }}',
+            username: '{{ user.username }}',
+            email: '{{ user.email }}',
+            subscription_type: '{{ user.subscription_type }}'
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

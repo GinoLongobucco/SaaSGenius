@@ -1,0 +1,312 @@
+/**
+ * SaaSGenius Monochromatic Design System
+ * 
+ * @description Centralized CSS custom properties for monochromatic theming
+ * @version 2.0.0
+ * @author SaaSGenius Team
+ * @license MIT
+ */
+
+/* ==========================================================================
+   MONOCHROMATIC DESIGN SYSTEM VARIABLES
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     REFINED MONOCHROMATIC COLOR PALETTE
+     ========================================================================== */
+
+  /* Core Monochromatic Colors - Professional & Elegant */
+  --color-white: #ffffff; /* Pure white for cards and text on dark */
+  --color-snow: #fafafa; /* Subtle background, softer than pure white */
+  --color-light-gray: #f0f0f0; /* Light borders, subtle dividers */
+  --color-silver: #e0e0e0; /* Input borders, inactive states */
+  --color-gray: #a0a0a0; /* Secondary text, placeholders */
+  --color-charcoal: #4a4a4a; /* Primary text, readable and elegant */
+  --color-dark: #2a2a2a; /* Headers, important text */
+  --color-black: #1a1a1a; /* Maximum contrast, CTAs, emphasis */
+
+  /* RGB values for rgba() functions */
+  --color-white-rgb: 255, 255, 255;
+  --color-snow-rgb: 250, 250, 250;
+  --color-light-gray-rgb: 240, 240, 240;
+  --color-silver-rgb: 224, 224, 224;
+  --color-gray-rgb: 160, 160, 160;
+  --color-charcoal-rgb: 74, 74, 74;
+  --color-dark-rgb: 42, 42, 42;
+  --color-black-rgb: 26, 26, 26;
+
+  /* Semantic color mappings */
+  --color-primary: var(--color-black);
+  --color-primary-rgb: var(--color-black-rgb);
+  --color-primary-hover: var(--color-dark);
+  --color-primary-light: var(--color-charcoal);
+
+  --color-secondary: var(--color-charcoal);
+  --color-secondary-hover: var(--color-dark);
+  --color-secondary-light: var(--color-gray);
+
+  --color-accent: var(--color-dark);
+
+  /* Semantic colors using monochromatic palette */
+  --color-success: var(--color-dark);
+  --color-warning: var(--color-dark);
+  --color-error: var(--color-dark);
+  --color-info: var(--color-dark);
+
+  /* Background Colors */
+  --color-background: var(--color-snow);
+  --color-background-alt: var(--color-light-gray);
+  --color-card-background: var(--color-white);
+  --color-overlay: rgba(26, 26, 26, 0.6);
+  --color-backdrop: rgba(26, 26, 26, 0.8);
+
+  /* Border Colors */
+  --color-border: var(--color-silver);
+  --color-border-light: var(--color-light-gray);
+  --color-border-focus: var(--color-charcoal);
+  --color-border-hover: var(--color-gray);
+
+  /* Text Colors */
+  --color-text: var(--color-charcoal);
+  --color-text-secondary: var(--color-gray);
+  --color-text-primary: var(--color-black);
+  --color-text-muted: var(--color-gray);
+  --color-text-inverse: var(--color-white);
+
+  /* ==========================================================================
+     TYPOGRAPHY - MONOCHROMATIC DESIGN SYSTEM
+     ========================================================================== */
+
+  /* Font Families */
+  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-headings: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono",
+    Consolas, "Courier New", monospace;
+
+  /* Font Sizes - Following the style guide */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px - Base paragraph size */
+  --font-size-lg: 1.125rem; /* 18px - Large paragraph size */
+  --font-size-xl: 1.5rem; /* 24px - H3 size */
+  --font-size-2xl: 1.75rem; /* 28px - H3 max size */
+  --font-size-3xl: 2rem; /* 32px - H2 min size */
+  --font-size-4xl: 2.5rem; /* 40px - H2 max size */
+  --font-size-5xl: 3rem; /* 48px - H1 min size */
+  --font-size-6xl: 4.5rem; /* 72px - H1 max size */
+
+  /* Font Weights - Following the style guide */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* Line Heights - Following the style guide */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6; /* Crucial for readability */
+
+  /* Letter Spacing - Following the style guide */
+  --letter-spacing-tight: -0.02em; /* For H1 impact */
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+
+  /* ==========================================================================
+     SPACING - 8PX GRID SYSTEM
+     ========================================================================== */
+
+  --spacing-0: 0;
+  --spacing-1: 0.5rem; /* 8px - Base unit */
+  --spacing-2: 1rem; /* 16px */
+  --spacing-3: 1.5rem; /* 24px */
+  --spacing-4: 2rem; /* 32px */
+  --spacing-5: 2.5rem; /* 40px */
+  --spacing-6: 3rem; /* 48px */
+  --spacing-8: 4rem; /* 64px */
+  --spacing-10: 5rem; /* 80px */
+  --spacing-12: 6rem; /* 96px */
+
+  /* Legacy spacing for backward compatibility */
+  --spacing-xs: var(--spacing-1); /* 8px */
+  --spacing-sm: var(--spacing-1); /* 8px */
+  --spacing-md: var(--spacing-2); /* 16px */
+  --spacing-lg: var(--spacing-2); /* 16px */
+  --spacing-xl: var(--spacing-3); /* 24px */
+  --spacing-2xl: var(--spacing-3); /* 24px */
+  --spacing-3xl: var(--spacing-4); /* 32px */
+  --spacing-4xl: var(--spacing-5); /* 40px */
+  --spacing-5xl: var(--spacing-6); /* 48px */
+  --spacing-6xl: var(--spacing-8); /* 64px */
+
+  /* ==========================================================================
+     BORDER RADIUS - FOLLOWING STYLE GUIDE
+     ========================================================================== */
+
+  --border-radius-none: 0;
+  --border-radius: 0.5rem; /* 8px - Default border radius */
+  --border-radius-sm: 0.25rem; /* 4px - Small elements, inputs */
+  --border-radius-md: 0.5rem; /* 8px - Standard containers, cards */
+  --border-radius-lg: 1rem; /* 16px - Large cards, modals */
+  --border-radius-xl: 1rem; /* 16px - Same as lg for consistency */
+  --border-radius-2xl: 1rem; /* 16px - Same as lg for consistency */
+  --border-radius-full: 9999px; /* Pill shape - buttons, avatars */
+
+  /* Border widths */
+  --border-width: 2px;
+  --border-width-thin: 1px;
+  --border-width-thick: 3px;
+  --border-width-medium: 2px;
+
+  /* ==========================================================================
+     REFINED SHADOWS - ELEGANT DEPTH
+     ========================================================================== */
+
+  --shadow-xs: 1px 1px 2px 0 rgba(26, 26, 26, 0.04);
+  --shadow-sm: 2px 2px 8px 0 rgba(26, 26, 26, 0.06);
+  --shadow-md: 3px 4px 16px 0 rgba(26, 26, 26, 0.08); /* Standard card shadow */
+  --shadow-lg: 4px 8px 24px 0 rgba(26, 26, 26, 0.12); /* Hover state shadow */
+  --shadow-xl: 6px 16px 32px 0 rgba(26, 26, 26, 0.16);
+  --shadow-2xl: 8px 24px 48px 0 rgba(26, 26, 26, 0.2);
+  --shadow-inner: inset 0 2px 4px 0 rgba(26, 26, 26, 0.06);
+  --shadow-focus: 0 0 0 3px rgba(74, 74, 74, 0.15);
+
+  /* Professional shadows */
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+  --shadow-modal: var(--shadow-xl);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-large: var(--shadow-xl);
+
+  /* ==========================================================================
+     TRANSITIONS - SMOOTH & PROFESSIONAL
+     ========================================================================== */
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: var(--transition-base);
+
+  /* Easing functions */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ==========================================================================
+     Z-INDEX SCALE
+     ========================================================================== */
+
+  --z-index-hide: -1;
+  --z-index-auto: auto;
+  --z-index-base: 0;
+  --z-index-docked: 10;
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-banner: 1030;
+  --z-index-overlay: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-skiplink: 1070;
+  --z-index-tooltip: 1080;
+  --z-index-notification: 9999;
+
+  /* ==========================================================================
+     BREAKPOINTS (for reference in media queries)
+     ========================================================================== */
+
+  /* Breakpoints - Mobile First Approach */
+  --breakpoint-mobile: 767px; /* Up to 767px */
+  --breakpoint-tablet: 768px; /* 768px to 1023px */
+  --breakpoint-desktop: 1024px; /* 1024px and above */
+}
+
+/* ==========================================================================
+   DARK MODE VARIABLES
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode using inverted monochromatic palette */
+    --color-white: var(--color-dark); /* Dark backgrounds */
+    --color-snow: var(--color-black); /* Darker backgrounds */
+    --color-light-gray: var(--color-charcoal); /* Borders, dividers */
+    --color-silver: var(--color-gray); /* Secondary text */
+    --color-gray: var(--color-silver); /* Primary text */
+    --color-charcoal: var(--color-light-gray); /* Light text */
+    --color-dark: var(--color-snow); /* Brightest text */
+    --color-black: var(--color-white); /* Brightest text */
+
+    /* Background and border adjustments */
+    --color-background: var(--color-dark);
+    --color-background-alt: var(--color-black);
+    --color-card-background: var(--color-dark);
+
+    --color-border: var(--color-charcoal);
+    --color-border-light: var(--color-gray);
+    --color-border-focus: var(--color-light-gray);
+    --color-border-hover: var(--color-silver);
+
+    /* Adjust shadows for dark mode */
+    --shadow-xs: 1px 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm: 2px 1px 3px 0 rgba(0, 0, 0, 0.3),
+      1px 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --shadow-md: 3px 4px 6px -1px rgba(0, 0, 0, 0.3),
+      2px 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 4px 10px 15px -3px rgba(0, 0, 0, 0.3),
+      2px 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 6px 20px 25px -5px rgba(0, 0, 0, 0.3),
+      4px 10px 10px -5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY PREFERENCES
+   ========================================================================== */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-sm: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 3px 4px 8px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 4px 10px 20px -3px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ==========================================================================
+   UTILITY MIXINS (CSS Custom Properties for common patterns)
+   ========================================================================== */
+
+:root {
+  /* Common component patterns */
+  --card-padding: var(--spacing-xl);
+  --card-border-radius: var(--border-radius-lg);
+  --card-shadow: var(--shadow-md);
+
+  --button-padding-x: var(--spacing-xl);
+  --button-padding-y: var(--spacing-md);
+  --button-border-radius: var(--border-radius-md);
+
+  --input-padding-x: var(--spacing-lg);
+  --input-padding-y: var(--spacing-md);
+  --input-border-radius: var(--border-radius-md);
+
+  /* Grid and layout */
+  --container-max-width: 1200px;
+  --grid-gap: var(--spacing-xl);
+  --grid-gap-sm: var(--spacing-md);
+}

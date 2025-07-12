@@ -1,0 +1,193 @@
+# Core Flask dependencies
+Flask==2.3.3
+Flask-Login==0.6.3
+Flask-SQLAlchemy==3.0.5
+Werkzeug==2.3.7
+
+# Database
+SQLAlchemy==2.0.23
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# AI and ML libraries (optional - loaded on demand)
+groq==0.4.1
+transformers==4.35.2
+torch==2.1.1
+spacy==3.7.2
+keybert==0.8.3
+
+# System monitoring
+psutil==5.9.6
+
+# HTTP requests
+requests==2.31.0
+
+# Development and testing
+pytest==7.4.3
+pytest-flask==1.3.0
+
+# Production server
+gunicorn==21.2.0
+
+# Security
+bcrypt==4.1.2
+cryptography==41.0.7
+
+# Date and time utilities
+python-dateutil==2.8.2
+
+# Regular expressions (enhanced)
+regex==2023.10.3
+
+# Data handling
+numpy==1.24.4
+pandas==2.1.3
+
+# JSON handling
+simplejson==3.19.2
+
+# Async support
+aiohttp==3.9.1
+
+# Caching
+redis==5.0.1
+
+# Background tasks
+celery==5.3.4
+
+# Configuration management
+pydantic==2.5.0
+
+# CORS support
+Flask-CORS==4.0.0
+
+# Rate limiting
+Flask-Limiter==3.5.0
+
+# JWT tokens
+PyJWT==2.8.0
+
+# Form handling
+WTForms==3.1.0
+Flask-WTF==1.2.1
+
+# Migration support
+Flask-Migrate==4.0.5
+
+# Testing utilities
+factory-boy==3.3.0
+faker==20.1.0
+
+# Code quality
+flake8==6.1.0
+black==23.11.0
+
+# Type checking
+mypy==1.7.1
+
+# Database migrations
+alembic==1.12.1
+
+# Task scheduling
+APScheduler==3.10.4
+
+# Progress bars
+tqdm==4.66.1
+
+# Time zone handling
+pytz==2023.3
+
+# Memory profiling
+memory-profiler==0.61.0
+
+# Natural language processing
+gensim==4.3.2
+
+# Text similarity
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.23.0
+
+# Language detection
+langdetect==1.0.9
+
+# Sentiment analysis
+vaderSentiment==3.3.2
+
+# PostgreSQL (optional)
+psycopg2-binary==2.9.9
+
+# Error tracking
+sentry-sdk==1.38.0
+
+# Metrics and monitoring
+prometheus-flask-exporter==0.23.0
+
+# Email validation
+email-validator==2.1.0
+
+# Phone number validation
+phonumbers==8.13.26
+
+# Password strength
+password-strength==0.0.3
+
+# Two-factor authentication
+pyotp==2.9.0
+
+# Retry logic
+retrying==1.3.4
+
+# Caching utilities
+cachetools==5.3.2
+
+# UUID generation
+uuid==1.30
+
+# Locale support
+babel==2.13.1
+
+# Mathematical operations
+sympy==1.12
+
+# Scientific computing
+scipy==1.11.4
+
+# Machine learning pipelines
+scikit-learn==1.3.2
+
+# WebSocket support
+Flask-SocketIO==5.3.6
+
+# Real-time communication
+socketio==5.10.0
+
+# API versioning
+Flask-RESTful==0.3.10
+
+# Swagger/OpenAPI
+flasgger==0.9.7.1
+
+# Health checks
+Flask-HealthCheck==1.0.0
+
+# Application performance monitoring
+elastic-apm==6.20.0
+
+# Feature flags
+flagsmith==3.6.0
+
+# Analytics
+segment-analytics-python==2.2.3
+
+# Model serving
+mlflow==2.8.1
+
+# Data validation
+great-expectations==0.18.5
+
+# Workflow management
+prefect==2.14.11
+
+# License checking
+licensecheck==2023.3.1

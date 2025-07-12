@@ -1,0 +1,12 @@
+{
+  "mcp_models": [
+    "mistralai/Mistral-7B-Instruct-v0.2",
+    "HuggingFaceH4/zephyr-7b-beta",
+    "google/gemma-7b-it",
+    "microsoft/DialoGPT-medium"
+  ],
+  "local_models": [
+    "microsoft/DialoGPT-medium",
+    "distilgpt2"
+  ]
+}
