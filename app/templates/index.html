@@ -1,1 +1,241 @@
-{% extends "base.html" %} {% block content %} <div class="container"> <header class="hero"> <div class="hero-content"> <div class="hero-badge"> <i class="fas fa-sparkles"></i> <span>Potenciado por IA Avanzada</span> </div> <div class="hero-logo"> <i class="fas fa-rocket" aria-hidden="true"></i> <h1>SaaSGenius</h1> </div> <h2 class="hero-title">Transforma Ideas en Éxito SaaS</h2> <p class="hero-subtitle"> Análisis inteligente de proyectos con IA que convierte tu concepto en un plan de negocio completo y estrategias de mercado precisas </p> <div class="hero-stats"> <div class="stat-item"> <div class="stat-number">500+</div> <div class="stat-label">Proyectos Analizados</div> </div> <div class="stat-item"> <div class="stat-number">95%</div> <div class="stat-label">Precisión IA</div> </div> <div class="stat-item"> <div class="stat-number">24/7</div> <div class="stat-label">Disponibilidad</div> </div> </div> <div class="hero-features"> <div class="feature-item"> <div class="feature-icon"> <i class="fas fa-brain"></i> </div> <div class="feature-content"> <h3>Análisis con IA</h3> <p>Algoritmos avanzados para evaluar viabilidad</p> </div> </div> <div class="feature-item"> <div class="feature-icon"> <i class="fas fa-chart-line"></i> </div> <div class="feature-content"> <h3>Métricas de Mercado</h3> <p>Datos en tiempo real del mercado objetivo</p> </div> </div> <div class="feature-item"> <div class="feature-icon"> <i class="fas fa-lightbulb"></i> </div> <div class="feature-content"> <h3>Estrategias Personalizadas</h3> <p>Recomendaciones específicas para tu nicho</p> </div> </div> </div> <div class="hero-cta"> <span class="cta-message">¿Listo para validar tu idea SaaS?</span> </div> </div> </header> <main class="main-content"> <section class="form-section"> <div class="form-container"> <div class="form-header"> <div class="form-icon"> <i class="fas fa-lightbulb" aria-hidden="true"></i> </div> <div class="form-title-group"> <h2 class="form-title">Describe tu Idea SaaS</h2> <p class="form-subtitle">Comparte los detalles de tu proyecto y obtén un análisis completo con IA</p> </div> </div> <div class="form-content"> <form id="projectForm" class="project-form"> <div class="form-field-group"> <div class="form-field"> <label for="projectDescription" class="form-label"> <i class="fas fa-edit"></i> Descripción del Proyecto </label> <div class="form-input-wrapper"> <textarea id="projectDescription" class="form-textarea enhanced" placeholder="Describe tu idea de proyecto SaaS aquí...\n\nEjemplo: Una plataforma para gestionar equipos remotos con funcionalidades de videoconferencia, seguimiento de tareas y análisis de productividad." required ></textarea> <div class="form-helper"> <div class="helper-left"> <i class="fas fa-info-circle"></i> <span>Sé específico sobre funcionalidades y mercado objetivo</span> </div> <div class="helper-right"> <span class="char-count">0 / 1000</span> </div> </div> </div> </div> </div> <div class="form-actions"> <div class="action-info"> <div class="info-item"> <i class="fas fa-clock"></i> <span>Análisis en ~30 segundos</span> </div> <div class="info-item"> <i class="fas fa-shield-alt"></i> <span>100% Confidencial</span> </div> </div> <button type="submit" id="analyzeBtn" class="btn btn-primary btn-analyze" aria-live="polite" > <div class="btn-content"> <i class="fas fa-brain" aria-hidden="true"></i> <span id="btnText">Analizar con IA</span> </div> <div id="loadingSpinner" class="loading hidden" role="status"> <i class="fas fa-spinner fa-spin" aria-hidden="true"></i> <span class="sr-only">Analizando...</span> </div> </button> </div> </form> </div> </div> </section> <section id="results" class="results-section hidden" aria-labelledby="results-heading" > <div class="section-header"> <i class="fas fa-chart-line" aria-hidden="true"></i> <h2 id="results-heading">2. Resultados del Análisis</h2> </div> <div class="results-grid"> <div class="card card-highlight animate-fadeInUp stagger-1"> <div class="card-header"> <i class="fas fa-tag"></i> <h3>Nombre Sugerido</h3> </div> <div class="card-body"> <p id="projectName" class="project-name"></p> </div> </div> <div class="card animate-fadeInUp stagger-2"> <div class="card-header"> <i class="fas fa-key"></i> <h3>Palabras Clave</h3> </div> <div class="card-body"> <div id="keywords" class="keywords-container"></div> </div> </div> <div class="card card-full animate-fadeInUp stagger-3"> <div class="card-header"> <i class="fas fa-file-alt"></i> <h3>Resumen Ejecutivo</h3> </div> <div class="card-body"> <p id="summary"></p> </div> </div> <div class="card animate-fadeInUp stagger-4"> <div class="card-header"> <i class="fas fa-chart-pie"></i> <h3>Análisis de Mercado</h3> </div> <div class="card-body"> <div id="marketAnalysis"></div> </div> </div> <div class="card animate-fadeInUp stagger-5"> <div class="card-header"> <i class="fas fa-cogs"></i> <h3>Características Principales</h3> </div> <div class="card-body"> <div id="coreFeatures"></div> </div> </div> <div class="card animate-fadeInUp stagger-6"> <div class="card-header"> <i class="fas fa-code"></i> <h3>Stack Tecnológico</h3> </div> <div class="card-body"> <div id="techRequirements"></div> </div> </div> <div class="card card-full animate-fadeInUp stagger-7"> <div class="card-header"> <i class="fas fa-road"></i> <h3>Roadmap de Desarrollo</h3> </div> <div class="card-body"> <div id="roadmap"></div> </div> </div> </div> <div class="action-buttons"> <button class="btn btn-secondary" onclick="window.print()"> <i class="fas fa-print"></i> Imprimir Análisis </button> <button class="btn btn-secondary" onclick="exportToPDF()"> <i class="fas fa-file-pdf"></i> Exportar PDF </button> <button class="btn btn-primary" onclick="resetForm()"> <i class="fas fa-plus"></i> Nuevo Análisis </button> </div> </section> </main> </div> {% endblock %} {% block extra_scripts %} <script src="{{ url_for('static', filename='js/index.js') }}"></script> {% endblock %}
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i>
+                <span>Potenciado por IA Avanzada</span>
+            </div>
+            
+            <div class="hero-logo">
+                <i class="fas fa-rocket" aria-hidden="true"></i>
+                <h1>SaaSGenius</h1>
+            </div>
+            
+            <h2 class="hero-title">Transforma Ideas en Éxito SaaS</h2>
+            <p class="hero-subtitle">
+                Análisis inteligente de proyectos con IA que convierte tu concepto en un plan de negocio completo y estrategias de mercado precisas
+            </p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Proyectos Analizados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Precisión IA</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Disponibilidad</div>
+                </div>
+            </div>
+            
+            <div class="hero-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Análisis con IA</h3>
+                        <p>Algoritmos avanzados para evaluar viabilidad</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Métricas de Mercado</h3>
+                        <p>Datos en tiempo real del mercado objetivo</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Estrategias Personalizadas</h3>
+                        <p>Recomendaciones específicas para tu nicho</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <span class="cta-message">¿Listo para validar tu idea SaaS?</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="main-content">
+        <section class="form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <div class="form-icon">
+                        <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-title-group">
+                        <h2 class="form-title">Describe tu Idea SaaS</h2>
+                        <p class="form-subtitle">Comparte los detalles de tu proyecto y obtén un análisis completo con IA</p>
+                    </div>
+                </div>
+                
+                <div class="form-content">
+                    <form id="projectForm" class="project-form">
+                        <div class="form-field-group">
+                            <div class="form-field">
+                                <label for="projectDescription" class="form-label">
+                                    <i class="fas fa-edit"></i>
+                                    Descripción del Proyecto
+                                </label>
+                                <div class="form-input-wrapper">
+                                    <textarea
+                                        id="projectDescription"
+                                        class="form-textarea enhanced"
+                                        placeholder="Describe tu idea de proyecto SaaS aquí...\n\nEjemplo: Una plataforma para gestionar equipos remotos con funcionalidades de videoconferencia, seguimiento de tareas y análisis de productividad."
+                                        required
+                                    ></textarea>
+                                    <div class="form-helper">
+                                        <div class="helper-left">
+                                            <i class="fas fa-info-circle"></i>
+                                            <span>Sé específico sobre funcionalidades y mercado objetivo</span>
+                                        </div>
+                                        <div class="helper-right">
+                                            <span class="char-count">0 / 1000</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <div class="action-info">
+                                <div class="info-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Análisis en ~30 segundos</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>100% Confidencial</span>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" id="analyzeBtn" class="btn btn-primary btn-analyze" aria-live="polite">
+                                <div class="btn-content">
+                                    <i class="fas fa-brain" aria-hidden="true"></i>
+                                    <span id="btnText">Analizar con IA</span>
+                                </div>
+                                <div id="loadingSpinner" class="loading hidden" role="status">
+                                    <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+                                    <span class="sr-only">Analizando...</span>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <section id="results" class="results-section hidden" aria-labelledby="results-heading">
+            <div class="section-header">
+                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                <h2 id="results-heading">2. Resultados del Análisis</h2>
+            </div>
+            
+            <div class="results-grid">
+                <div class="card card-highlight animate-fadeInUp stagger-1">
+                    <div class="card-header">
+                        <i class="fas fa-tag"></i>
+                        <h3>Nombre Sugerido</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="projectName" class="project-name"></p>
+                    </div>
+                </div>
+                
+                <div class="card animate-fadeInUp stagger-2">
+                    <div class="card-header">
+                        <i class="fas fa-key"></i>
+                        <h3>Palabras Clave</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="keywords" class="keywords-container"></div>
+                    </div>
+                </div>
+                
+                <div class="card card-full animate-fadeInUp stagger-3">
+                    <div class="card-header">
+                        <i class="fas fa-file-alt"></i>
+                        <h3>Resumen Ejecutivo</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="summary"></p>
+                    </div>
+                </div>
+                
+                <div class="card animate-fadeInUp stagger-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Análisis de Mercado</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="marketAnalysis"></div>
+                    </div>
+                </div>
+                
+                <div class="card animate-fadeInUp stagger-5">
+                    <div class="card-header">
+                        <i class="fas fa-cogs"></i>
+                        <h3>Características Principales</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="coreFeatures"></div>
+                    </div>
+                </div>
+                
+                <div class="card animate-fadeInUp stagger-6">
+                    <div class="card-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Stack Tecnológico</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="techRequirements"></div>
+                    </div>
+                </div>
+                
+                <div class="card card-full animate-fadeInUp stagger-7">
+                    <div class="card-header">
+                        <i class="fas fa-road"></i>
+                        <h3>Roadmap de Desarrollo</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="roadmap"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i>
+                    Imprimir Análisis
+                </button>
+                <button class="btn btn-secondary" onclick="exportToPDF()">
+                    <i class="fas fa-file-pdf"></i>
+                    Exportar PDF
+                </button>
+                <button class="btn btn-primary" onclick="resetForm()">
+                    <i class="fas fa-plus"></i>
+                    Nuevo Análisis
+                </button>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

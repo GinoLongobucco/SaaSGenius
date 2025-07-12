@@ -146,6 +146,75 @@ def log_analytics_event(user_id, event_type, event_data=None, ip_address=None, u
     db.session.add(event)
     db.session.commit()
 
+def init_database():
+    """Initialize the database tables"""
+    db.create_all()
+    print("Database tables created successfully")
+
+def create_demo_user():
+    """Create or update the demo user account"""
+    demo_user = User.query.filter_by(username='demo').first()
+    
+    if not demo_user:
+        # Create new demo user
+        demo_user = User(
+            username='demo',
+            email='demo@saasgenius.com',
+            subscription_type='premium'  # Give demo user premium access
+        )
+        demo_user.set_password('demo123')  # Simple password for demo
+        db.session.add(demo_user)
+        print("Demo user created successfully")
+    else:
+        # Update existing demo user
+        demo_user.email = 'demo@saasgenius.com'
+        demo_user.subscription_type = 'premium'
+        demo_user.set_password('demo123')
+        print("Demo user updated successfully")
+    
+    # Create some sample projects for the demo user
+    existing_projects = Project.query.filter_by(user_id=demo_user.id).count()
+    if existing_projects == 0:
+        sample_projects = [
+            {
+                'title': 'E-commerce Platform Analysis',
+                'description': 'Comprehensive analysis of a modern e-commerce platform with microservices architecture',
+                'analysis_data': {
+                    'tech_stack': ['React', 'Node.js', 'MongoDB', 'Redis'],
+                    'complexity': 'High',
+                    'estimated_time': '3-6 months',
+                    'team_size': '5-8 developers'
+                },
+                'tags': 'e-commerce,microservices,react'
+            },
+            {
+                'title': 'Mobile App MVP',
+                'description': 'Analysis for a social media mobile application MVP',
+                'analysis_data': {
+                    'tech_stack': ['React Native', 'Firebase', 'Node.js'],
+                    'complexity': 'Medium',
+                    'estimated_time': '2-4 months',
+                    'team_size': '3-5 developers'
+                },
+                'tags': 'mobile,mvp,social-media'
+            }
+        ]
+        
+        for project_data in sample_projects:
+            project = Project(
+                user_id=demo_user.id,
+                title=project_data['title'],
+                description=project_data['description'],
+                analysis_data=json.dumps(project_data['analysis_data']),
+                tags=project_data['tags']
+            )
+            db.session.add(project)
+        
+        print("Sample projects created for demo user")
+    
+    db.session.commit()
+    return demo_user
+
 if __name__ == '__main__':
     init_database()
     create_demo_user()
